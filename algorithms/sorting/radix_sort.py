@@ -25,22 +25,27 @@
 
 
 def sort(seq):
-    while:
+    n = 10
+    m = 1
+    while True:
         non_zero_count = 0
         buckets = {}
-        mod_num += 10
+        
         for item in seq:
-            key = int(item) % mod_num 
+            key = (int(item) % n)/m
             if key > 0:
                 non_zero_count += 1
-
-            buckets[key] = buckets.get(key, []).append(item)
+            vals = buckets.get(key, []) 
+            vals.append(item)
+            buckets[key] = vals
         seq = []
-        for i in xrange(9):
+        for i in xrange(10):
             seq += buckets.get(i, [])
-        if non_zero_count > 0:
+        if non_zero_count <= 1:
             break
-
+            
+        n *= 10
+        m *= 10
     return seq
 
 
